@@ -1,1 +1,17 @@
-new jenkins file
+pipeline{
+    agent any
+    environment{
+        RELEASE='21.01'
+    }
+    stages{
+        stage('check'){
+            steps{
+            sh '''
+                echo "nicely done"
+            '''
+
+            }
+           
+        }
+    }
+}
