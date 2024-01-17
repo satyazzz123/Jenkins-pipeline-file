@@ -4,14 +4,43 @@ pipeline{
         RELEASE='21.01'
     }
     stages{
-        stage('check'){
+        stage('checking for dependency'){
             steps{
             sh '''
-                go version
+
+                git version
+                
             '''
+
 
             }
            
+        }
+        // stage('pulling application from git'){
+        //     steps{
+        //         sh '''
+        //             mkdir go-application 
+        //             cd go-application
+        //             git clone https://github.com/satyazzz123/Go-mail
+
+        //         '''
+        //     }
+        // }
+
+        stage('check for go version'){
+                steps{
+                    sh '''
+                    go -version
+                    '''
+                }
+        }
+
+        stage('check for java version'){
+                steps{
+                    sh '''
+                    java -version
+                    '''
+                }
         }
     }
 }
