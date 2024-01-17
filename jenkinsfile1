@@ -19,8 +19,8 @@ pipeline{
         stage('installing required dependencies'){
                 steps{
                     sh '''
-                    
-                    sudo snap install go --classic
+                    su -
+                    snap install go --classic
                     go version
 
                     '''
