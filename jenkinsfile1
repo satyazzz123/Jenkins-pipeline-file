@@ -16,16 +16,16 @@ pipeline{
             }
            
         }
-        stage('installing required dependencies'){
-                steps{
-                    sh '''
-                    su -
-                    snap install go --classic
-                    go version
+        // stage('installing required dependencies'){
+        //         steps{
+        //             sh '''
+        //             su -
+        //             snap install go --classic
+        //             go version
 
-                    '''
-                }
-        }
+        //             '''
+        //         }
+        // }
         stage('pulling application from git'){
             steps{
                 sh '''
