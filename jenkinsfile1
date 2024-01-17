@@ -28,12 +28,16 @@ pipeline{
         // }
         stage('pulling application from git'){
             steps{
-                sh '''
-                    mkdir go-application 
-                    cd go-application
-                    git clone https://github.com/satyazzz123/Go-mail
+                  script {
+                    // Clone the Git repository's master branch
+                    def gitRepoUrl = 'https://github.com/satyazzz123/Go-mail'
 
-                '''
+                    checkout([$class: 'GitSCM', 
+                        branches: [[name: '*/master']], 
+                        userRemoteConfigs: [[url: gitRepoUrl]], 
+                        extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'CloneOption', noTags: false, shallow: true, depth: 1]]
+                    ])
+                }
             }
         }
 
